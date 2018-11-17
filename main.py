@@ -4,7 +4,6 @@ import numpy
 import imutils
 from skimage.measure import compare_ssim
 
-
 img1 = cv2.imread("totoro.jpg")
 img2 = cv2.imread("totoropng.png");
 
