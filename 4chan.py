@@ -40,10 +40,11 @@ for post in thread.posts:
     print "Has File: ",post.has_file
     print "Comment: ",post.text_comment
 
-for f in thread.files():
-    for n in thread.filenames():
-        print "file URL",f
-        image.urlretrieve(f, "images/"+n)
+
+
+for f in thread.file_objects():
+    print "file URL",f.file_url
+    image.urlretrieve(f.file_url, "images/"+f.filename)
 
 
         
