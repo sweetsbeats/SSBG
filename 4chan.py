@@ -2,6 +2,13 @@ import basc_py4chan
 import argparse
 import urllib
 
+import cv2
+import numpy
+import imutils
+from skimage.measure import compare_ssim
+import glob
+
+import main
 
 image = urllib
 
@@ -47,4 +54,11 @@ for f in thread.file_objects():
     image.urlretrieve(f.file_url, "images/"+f.filename)
 
 
-        
+
+images = [cv2.imread(file) for file in glob.glob("images/*.png")]
+#main.getImagesFromFolder("images/")
+print type(images)
+
+
+if main.compareAllImages(images):
+    print "Test works"

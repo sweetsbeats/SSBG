@@ -3,6 +3,7 @@ import cv2
 import numpy
 import imutils
 from skimage.measure import compare_ssim
+import glob
 
 img1 = cv2.imread("totoro.jpg")
 img2 = cv2.imread("totoropng.png");
@@ -55,3 +56,23 @@ if numpy.any(diff):
     cv2.destroyAllWindows()
 else:
     print "Images are the same"
+
+
+def getImagesFromFolder(folderName):
+    return [cv2.imread(file) for file in glob.glob(folderName+"*.*")]
+
+
+def compareAllImages(images):
+    for i in range(0, len(images)):
+        for j in range(i+1, len(images)):
+            if not numpy.any(cv2.subtract(images[i], images[j])):
+                print "weenus!"
+        
+
+def compareImages(img, images):
+    for i in xrange(images):
+        if numpy.any(cv2.subtract(img, i)):
+            print "Found duplicate:"
+            print "Name: ",img.filename
+            return True
+    return False
