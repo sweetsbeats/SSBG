@@ -3,9 +3,12 @@ __pycache__/
 *.py[cod]
 *$py.class
 
-#Emacs buffers
+# Emacs buffers
 *.*~
 *.py~
+
+# Ignore the images folder we scrape to
+images/*
 
 # C extensions
 *.so

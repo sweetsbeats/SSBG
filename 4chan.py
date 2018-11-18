@@ -1,6 +1,9 @@
 import basc_py4chan
 import argparse
+import urllib
 
+
+image = urllib
 
 parser = argparse.ArgumentParser()
 parser.add_argument("thread", help="Thread to grab images from" )
@@ -34,4 +37,13 @@ if thread.sticky:
 
 for post in thread.posts:
     print "Subject: ", post.subject
-    print post.text_comment
+    print "Has File: ",post.has_file
+    print "Comment: ",post.text_comment
+
+for f in thread.files():
+    for n in thread.filenames():
+        print "file URL",f
+        image.urlretrieve(f, "images/"+n)
+
+
+        
